@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Trainer } from './model/trainer';
-import { Pokemon } from './model/pokemon';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
@@ -8,8 +7,8 @@ import { Observable, of } from 'rxjs';
 })
 export class TrainerService {
   trainerList: Trainer[] = [
-    { naam: 'chrisvanart', heeft: [{id:1,naam:'Cyndaquil'},{id:3,naam:'Bulbasaur'}], zoekt: [{id:4,naam:'Kyogre'},{id:6,naam:'Plusle'}]},
-    { naam: 'elifeli94', heeft: [{id:6,naam:'Plusle'},{id:1,naam:'Cyndaquil'}], zoekt: [{id:2,naam:'Duskull'}]},
+    { naam: 'chrisvanart', heeft: [{id:155,naam:'Cyndaquil'},{id:1,naam:'Bulbasaur'}], zoekt: [{id:382,naam:'Kyogre'},{id:311,naam:'Plusle'}]},
+    { naam: 'elifeli94', heeft: [{id:311,naam:'Plusle'},{id:155,naam:'Cyndaquil'}], zoekt: [{id:355,naam:'Duskull'}]},
     ];
 
   constructor() { }
