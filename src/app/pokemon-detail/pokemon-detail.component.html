@@ -1,0 +1,22 @@
+<div *ngIf="pokemon">
+<h1>{{pokemon.naam}}</h1>
+<div *ngIf="zoekTrainers.length > 0">
+<h2>Trainers die {{pokemon.naam}} zoeken</h2>
+<ul>
+  <li *ngFor="let trainer of zoekTrainers">
+    {{trainer.naam}}
+  </li>
+</ul>
+</div>
+<div *ngIf="heeftTrainers.length > 0">
+<h2>Trainers die {{pokemon.naam}} hebben</h2>
+<ul>
+  <li *ngFor="let trainer of heeftTrainers">
+    {{trainer.naam}}
+  </li>
+</ul>
+</div>
+</div>
+<div *ngIf="!pokemon">
+<p>Laden...</p>
+</div>
