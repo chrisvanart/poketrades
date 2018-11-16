@@ -1,7 +1,7 @@
 <div *ngIf="pokemon">
-<h1>{{pokemon}}</h1>
+<h1>{{pokemon}} ({{type}})</h1>
 <div *ngIf="zoekTrainers.length > 0">
-<h2>Trainers die {{pokemon}} zoeken</h2>
+<h2>Trainers die {{pokemon}} <span *ngIf="type != 'Normaal'" class="label label-default">{{type}}</span> zoeken</h2>
 <ul>
   <li *ngFor="let trainer of zoekTrainers">
     {{trainer.naam}}
@@ -9,7 +9,7 @@
 </ul>
 </div>
 <div *ngIf="heeftTrainers.length > 0">
-<h2>Trainers die {{pokemon}} hebben</h2>
+<h2>Trainers die {{pokemon}} <span *ngIf="type != 'Normaal'" class="label label-default">{{type}}</span> hebben</h2>
 <ul>
   <li *ngFor="let trainer of heeftTrainers">
     {{trainer.naam}}

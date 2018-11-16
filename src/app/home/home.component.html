@@ -14,12 +14,12 @@
       <td>{{trainer.naam}}</td>
       <td>
         <ul>
-          <li *ngFor="let poke of trainer.zoekt"><a routerLink="/pokemon/{{poke.id}}">{{poke.naam}}</a></li>
+          <li *ngFor="let poke of trainer.zoekt"><a routerLink="/pokemon/{{poke.id}}/{{poke.type}}">{{poke.naam}} <span class="label label-primary">{{poke.typenaam}}</span></a></li>
         </ul>
       </td>
       <td>
         <ul>
-          <li *ngFor="let poke of trainer.heeft"><a routerLink="/pokemon/{{poke.id}}">{{poke.naam}}</a></li>
+          <li *ngFor="let poke of trainer.heeft"><a routerLink="/pokemon/{{poke.id}}/{{poke.type}}">{{poke.naam}} <span class="label label-primary">{{poke.typenaam}}</span></a></li>
         </ul>
       </td>
     </tr>

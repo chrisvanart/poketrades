@@ -3,6 +3,7 @@ import { Trainer } from '../model/trainer';
 import { Pokemon } from '../model/pokemon';
 import { TrainerService} from '../trainer.service';
 import { PokemonList } from '../data/pokemon.json';
+import { TypeList } from '../data/typelist';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -17,6 +18,7 @@ import { MessageService } from '../message.service';
 export class PokemonDetailComponent implements OnInit {
 
   pokemon: string;
+  type: string;
   zoekTrainers: Trainer[] = [];
   heeftTrainers: Trainer[] = [];
 
@@ -28,18 +30,20 @@ export class PokemonDetailComponent implements OnInit {
 
   getPokemonData(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    if(id < 1 || id > 800)
+    const type = +this.route.snapshot.paramMap.get('type');
+    if(id < 1 || id > 800 || type < -1 || type > TypeList.length)
     {
       this.messageService.addError('Onbekend Pokemonnummer');
        this.router.navigate(['/home']);
        return;
     }
     this.pokemon = PokemonList[id-1];
-    this.trainerService.getZoekPokemon(id)
+    this.type = TypeList[type];
+    this.trainerService.getZoekPokemon(id,type)
       .subscribe(trainers => this.zoekTrainers = trainers);
-    this.trainerService.getHeeftPokemon(id)
+    this.trainerService.getHeeftPokemon(id,type)
       .subscribe(trainers => this.heeftTrainers = trainers);
-    this.messageService.addError('Klopt niet');
+
   }
 
 }

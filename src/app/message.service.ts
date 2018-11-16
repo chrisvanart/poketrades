@@ -4,7 +4,7 @@ import { Message } from './model/message';
   providedIn: 'root'
 })
 export class MessageService {
-  private errors: Message[] = [];
+  public errors: Message[] = [];
   constructor() { }
 
 
