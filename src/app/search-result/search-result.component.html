@@ -1,0 +1,7 @@
+<h1>Zoekresultaten</h1>
+
+<div *ngIf="results">
+  <ul>
+    <li *ngFor="let result of results"><a routerLink="/pokemon/{{result.id}}/0">{{result.naam}}</a></li>
+  </ul>
+</div>

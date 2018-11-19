@@ -1,6 +1,30 @@
 <h1>Mijn profiel</h1>
+
+<div *ngIf="trainerDetails">
+<h2>Gezocht</h2>
+<ul>
+  <li *ngFor="let poke of trainerDetails.zoekt"><a routerLink="/pokemon/{{poke.id}}/{{poke.type}}">{{poke.naam}}</a> <span class="label label-default">{{poke.typenaam}}</span></li>
+</ul>
+<h2>Aangeboden</h2>
+<ul>
+  <li *ngFor="let poke of trainerDetails.heeft"><a routerLink="/pokemon/{{poke.id}}/{{poke.type}}">{{poke.naam}}</a> <span class="label label-default">{{poke.typenaam}}</span></li>
+</ul>
+</div>
+<h3>Toevoegen</h3>
 <p>
-  <select>
-    <option *ngFor="let type of typeList">{{type}}</option>
+  <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+  <select #pokemonName>
+    <option *ngFor="let result of resultList" value="{{result}}">{{result}}</option>
   </select>
+  <select #pokemonType>
+    <option *ngFor="let type of typeList;let i = index;" value="{{i}}">{{type}}</option>
+  </select>
+  <select #gezocht>
+    <option value="0">Aangeboden</option>
+    <option value="1">Gezocht</option>
+  </select>
+  <button (click)="add(pokemonName.value,pokemonType.value,gezocht.value)">Toevoegen</button>
 </p>
+
+
+

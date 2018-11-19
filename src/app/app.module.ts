@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { FormsModule } from '@angular/forms';
 import { fakeBackendProvider } from './fake-backend';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +20,7 @@ import { ErrorInterceptor } from './error.interceptor';
 
 import { UserService } from './user.service';
 import { AuthenticationService } from './authentication.service';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +29,15 @@ import { AuthenticationService } from './authentication.service';
     PokemonDetailComponent,
     MessagesComponent,
     ProfileComponent,
-    LoginComponent
+    LoginComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [AuthGuard,
         AuthenticationService,

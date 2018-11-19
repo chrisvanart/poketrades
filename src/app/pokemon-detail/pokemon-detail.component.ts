@@ -17,19 +17,26 @@ import { MessageService } from '../message.service';
 
 export class PokemonDetailComponent implements OnInit {
 
+  id: number;
   pokemon: string;
   type: string;
+  typeList: string[];
   zoekTrainers: Trainer[] = [];
   heeftTrainers: Trainer[] = [];
 
   constructor(private trainerService: TrainerService, private route: ActivatedRoute,private location: Location,private router: Router, private messageService: MessageService) { }
 
   ngOnInit() {
+    this.typeList = TypeList;
     this.getPokemonData();
+    this.route.params.subscribe(params => {
+      this.getPokemonData();
+    });
   }
 
   getPokemonData(): void {
     const id = +this.route.snapshot.paramMap.get('id');
+    this.id = id;
     const type = +this.route.snapshot.paramMap.get('type');
     if(id < 1 || id > 800 || type < -1 || type > TypeList.length)
     {
