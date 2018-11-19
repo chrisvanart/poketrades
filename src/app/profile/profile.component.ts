@@ -3,6 +3,8 @@ import { TypeList } from '../data/typelist';
 import { PokemonList } from '../data/pokemon.json';
 import { MessageService } from '../message.service';
 import { TrainerService } from '../trainer.service';
+import { AuthenticationService } from '../authentication.service';
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Trainer } from '../model/trainer';
 @Component({
   selector: 'app-profile',
@@ -16,7 +18,7 @@ export class ProfileComponent implements OnInit {
 
   trainerDetails: Trainer;
 
-  constructor(private messageService: MessageService, private trainerService: TrainerService) { }
+  constructor(private messageService: MessageService, private trainerService: TrainerService, private authenticationService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
     this.typeList = TypeList;
@@ -50,8 +52,18 @@ export class ProfileComponent implements OnInit {
       {
         this.messageService.clear();
         this.messageService.addNotification("Pokemon toegevoegd");
+        this.getTrainer();
       }
     );
+  }
+
+  deletePokemon(id:number,type:number,gezocht:number): void {
+    this.trainerService.deletePokemon(id,type,JSON.parse(localStorage.getItem('currentUser')).id,gezocht).subscribe(response => {this.getTrainer();});
+  }
+
+  logout(): void {
+    this.authenticationService.logout();
+    this.router.navigate(['/home']);
   }
 
 }

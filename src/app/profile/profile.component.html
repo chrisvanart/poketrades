@@ -1,18 +1,18 @@
 <h1>Mijn profiel</h1>
-
+<button class="button button-default" (click)="logout()">Logout</button>
 <div *ngIf="trainerDetails">
 <h2>Gezocht</h2>
 <ul>
-  <li *ngFor="let poke of trainerDetails.zoekt"><a routerLink="/pokemon/{{poke.id}}/{{poke.type}}">{{poke.naam}}</a> <span class="label label-default">{{poke.typenaam}}</span></li>
+  <li *ngFor="let poke of trainerDetails.zoekt"><a routerLink="/pokemon/{{poke.id}}/{{poke.type}}">{{poke.naam}}</a> <span class="label label-default">{{poke.typenaam}}</span> <a (click)="deletePokemon(poke.id,poke.type,1);">(wissen)</a></li>
 </ul>
 <h2>Aangeboden</h2>
 <ul>
-  <li *ngFor="let poke of trainerDetails.heeft"><a routerLink="/pokemon/{{poke.id}}/{{poke.type}}">{{poke.naam}}</a> <span class="label label-default">{{poke.typenaam}}</span></li>
+  <li *ngFor="let poke of trainerDetails.heeft"><a routerLink="/pokemon/{{poke.id}}/{{poke.type}}">{{poke.naam}}</a> <span class="label label-default">{{poke.typenaam}}</span> <a (click)="deletePokemon(poke.id,poke.type,0);">(wissen)</a></li>
 </ul>
 </div>
 <h3>Toevoegen</h3>
 <p>
-  <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+  Zoek: <input #searchBox id="search-box" (input)="search(searchBox.value)" /><br/>
   <select #pokemonName>
     <option *ngFor="let result of resultList" value="{{result}}">{{result}}</option>
   </select>
