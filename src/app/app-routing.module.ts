@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { AuthGuard } from './auth.guard';
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent},
   { path: 'search/:term', component: SearchResultComponent },
+  { path: 'register', component: RegisterComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },];
 
 @NgModule({

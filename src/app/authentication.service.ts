@@ -20,6 +20,10 @@ export class AuthenticationService {
             }));
     }
 
+    register(username: string, password: string) {
+      return this.http.post<any>(`${config.apiUrl}/1/register`, {username: username, password: password });
+    }
+
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');

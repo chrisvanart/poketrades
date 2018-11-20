@@ -21,6 +21,7 @@ import { ErrorInterceptor } from './error.interceptor';
 import { UserService } from './user.service';
 import { AuthenticationService } from './authentication.service';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SearchResultComponent } from './search-result/search-result.component';
     MessagesComponent,
     ProfileComponent,
     LoginComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
