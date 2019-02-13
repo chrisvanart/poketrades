@@ -4,7 +4,9 @@ export const TypeList: string[] = [
 	"Met pet",
 	"Halloweenmuts",
 	"Shiny met pet",
-	"Shiny met halloweenmuts"
+	"Shiny met halloweenmuts",
+	"Alolan",
+	"Alolan Shiny"
 
 
 ];

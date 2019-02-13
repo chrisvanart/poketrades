@@ -1,6 +1,6 @@
 export class Pokemon {
 	id: number;
-	naam: string;
+	naam?: string;
 	type: number;
-	typenaam: string;
+	typenaam?: string;
 }

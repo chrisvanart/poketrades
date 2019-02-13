@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AuthenticationService } from '../authentication.service';
+import { UserService } from '../user.service';
 import { MessageService } from '../message.service';
 
 @Component({
@@ -18,9 +18,8 @@ export class RegisterComponent implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder,
-              private route: ActivatedRoute,
               private router: Router,
-              private authenticationService: AuthenticationService,
+              private userService: UserService,
               private messageService: MessageService) { }
 
   ngOnInit() {
@@ -42,7 +41,7 @@ export class RegisterComponent implements OnInit {
 
     this.loading = true;
 
-    this.authenticationService.register(this.f.username.value,this.f.password.value).pipe(first()).subscribe(
+    this.userService.register(this.f.username.value,this.f.password.value).pipe(first()).subscribe(
         data => {
                   this.messageService.addNotification("Registratie gelukt, je kan nu inloggen");
                   this.router.navigate(['/home']);

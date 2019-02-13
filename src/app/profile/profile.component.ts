@@ -53,7 +53,8 @@ export class ProfileComponent implements OnInit {
         this.messageService.clear();
         this.messageService.addNotification("Pokemon toegevoegd");
         this.getTrainer();
-      }
+      },
+      error => {this.messageService.addError(error);  }
     );
   }
 

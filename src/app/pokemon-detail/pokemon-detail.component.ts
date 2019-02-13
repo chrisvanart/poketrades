@@ -50,6 +50,7 @@ export class PokemonDetailComponent implements OnInit {
       .subscribe(trainers => this.zoekTrainers = trainers);
     this.trainerService.getHeeftPokemon(id,type)
       .subscribe(trainers => this.heeftTrainers = trainers);
+    
 
   }
 
